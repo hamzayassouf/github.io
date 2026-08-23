@@ -12,6 +12,7 @@ import asyncio
 import logging
 import os
 import re
+import time
 from datetime import date, time as dtime, timezone
 
 from dotenv import load_dotenv
@@ -40,12 +41,16 @@ logger = logging.getLogger(__name__)
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
+FREE_CHECK_COOLDOWN_SECONDS = 15
+_last_free_check: dict[int, float] = {}
+
 WELCOME_TEXT = (
     "أهلاً 👋\n\n"
     "أنا بوت بفحصلك إذا إيميلك ظهر بأي تسريب بيانات معروف.\n\n"
     "• ابعتلي إيميل مباشرة → فحص فوري ومجاني لمرة وحدة.\n"
     "• /subscribe → مراقبة مستمرة لإيميل واحد أو أكثر، وتنبيه فوري عند تسريب جديد.\n"
-    "• /mystatus → شوف حالة اشتراكك.\n\n"
+    "• /mystatus → شوف حالة اشتراكك.\n"
+    "• /deletemydata → احذف كل بياناتك المخزّنة عندنا نهائياً.\n\n"
     "⚠️ الفحص المجاني لحظي وما منخزنه. المراقبة المستمرة بتتطلب اشتراك."
 )
 
@@ -66,6 +71,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     if not EMAIL_RE.match(text):
         await update.message.reply_text(f"هاد مش شكل إيميل صحيح 🤔\n{HELP_TEXT}")
         return
+
+    chat_id = update.effective_chat.id
+    now = time.monotonic()
+    elapsed = now - _last_free_check.get(chat_id, 0.0)
+    if elapsed < FREE_CHECK_COOLDOWN_SECONDS:
+        wait = int(FREE_CHECK_COOLDOWN_SECONDS - elapsed) + 1
+        await update.message.reply_text(f"⏳ استنى {wait} ثانية قبل ما تفحص إيميل تاني.")
+        return
+    _last_free_check[chat_id] = now
 
     await update.message.reply_text("⏳ عم فحص الإيميل...")
 
@@ -217,6 +231,23 @@ async def status_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     )
 
 
+async def deletemydata_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(
+        "متأكد بدك تمسح كل بياناتك عندنا (الاشتراك وكل الإيميلات المراقبة)؟\n"
+        "هاد الإجراء نهائي وما إله رجعة.",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("نعم، امسح كل شي 🗑️", callback_data="confirmdelete")]]
+        ),
+    )
+
+
+async def handle_delete_confirm(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    query = update.callback_query
+    await query.answer()
+    db.delete_user_data(query.message.chat_id)
+    await query.edit_message_text("تم حذف كل بياناتك من عندنا. ✅")
+
+
 async def check_watches_job(context: ContextTypes.DEFAULT_TYPE) -> None:
     today = date.today().isoformat()
     for chat_id, _plan, expires_at, expiry_notified, email, last_breaches in db.all_watches_with_subscriptions():
@@ -264,7 +295,9 @@ def main() -> None:
     app.add_handler(CommandHandler("watch", watch_command))
     app.add_handler(CommandHandler("unwatch", unwatch_command))
     app.add_handler(CommandHandler("mystatus", status_command))
+    app.add_handler(CommandHandler("deletemydata", deletemydata_command))
     app.add_handler(CallbackQueryHandler(handle_plan_choice, pattern=r"^buyplan:"))
+    app.add_handler(CallbackQueryHandler(handle_delete_confirm, pattern=r"^confirmdelete$"))
     app.add_handler(PreCheckoutQueryHandler(precheckout))
     app.add_handler(MessageHandler(filters.SUCCESSFUL_PAYMENT, successful_payment))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
