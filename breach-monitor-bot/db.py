@@ -135,3 +135,10 @@ def all_watches_with_subscriptions() -> list[tuple[int, str, str, bool, str, lis
 def mark_expiry_notified(chat_id: int) -> None:
     with _connect() as conn:
         conn.execute("UPDATE subscriptions SET expiry_notified = 1 WHERE chat_id = ?", (chat_id,))
+
+
+def delete_user_data(chat_id: int) -> None:
+    """Erase everything stored for a chat: subscription and all watched emails."""
+    with _connect() as conn:
+        conn.execute("DELETE FROM watched_emails WHERE chat_id = ?", (chat_id,))
+        conn.execute("DELETE FROM subscriptions WHERE chat_id = ?", (chat_id,))
