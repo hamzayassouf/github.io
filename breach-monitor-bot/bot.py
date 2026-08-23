@@ -119,7 +119,8 @@ async def handle_plan_choice(update: Update, context: ContextTypes.DEFAULT_TYPE)
         payload=plan_key,
         currency="XTR",
         prices=[LabeledPrice(plan["label"], plan["stars"])],
-        provider_token="",
+        # provider_token must be omitted (not "") for Telegram Stars —
+        # passing an empty string triggers PROVIDER_ACCOUNT_INVALID.
     )
 
 
