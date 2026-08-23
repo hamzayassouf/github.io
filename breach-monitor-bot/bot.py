@@ -18,6 +18,9 @@ from breach_check import check_email
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+# httpx logs the full request URL at INFO level, which for the Telegram Bot
+# API includes the bot token — keep it quiet so the token never hits stdout/logs.
+logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
