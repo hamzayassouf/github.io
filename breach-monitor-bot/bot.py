@@ -26,10 +26,13 @@ from telegram.ext import (
     PreCheckoutQueryHandler,
     filters,
 )
+from xposedornot.exceptions import RateLimitError
 
 import db
 from breach_check import check_email
 from payments import PLANS
+
+RATE_LIMITED_TEXT = "⏳ خدمة الفحص مزدحمة حالياً (تجاوزنا الحد المسموح مؤقتاً). جرب بعد شوي."
 
 load_dotenv()
 
@@ -85,6 +88,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     try:
         breaches = await asyncio.to_thread(check_email, text)
+    except RateLimitError:
+        await update.message.reply_text(RATE_LIMITED_TEXT)
+        return
     except Exception:
         logger.exception("Breach lookup failed")
         await update.message.reply_text("صار خطأ أثناء الفحص، جرب كمان شوي 🙏")
@@ -189,6 +195,9 @@ async def watch_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     try:
         breaches = await asyncio.to_thread(check_email, email)
+    except RateLimitError:
+        await update.message.reply_text(RATE_LIMITED_TEXT)
+        return
     except Exception:
         logger.exception("Breach lookup failed while adding a watch")
         await update.message.reply_text("صار خطأ أثناء الفحص الأولي، جرب كمان شوي 🙏")
