@@ -74,11 +74,33 @@ if (!in_array($art, ['privat', 'gewerblich'], true)) {
     $fehler[] = 'art';
 }
 
+$objektart = $_POST['objektart'] ?? '';
+$ERLAUBTE_OBJEKTARTEN = ['haus', 'wohnung', 'keller', 'garage', 'gewerbeeinheit', 'sonstiges'];
+if (!in_array($objektart, $ERLAUBTE_OBJEKTARTEN, true)) {
+    $fehler[] = 'objektart';
+}
+
 $wohnflaeche = filter_var($_POST['wohnflaeche'] ?? '', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1, 'max_range' => 2000],
 ]);
 if ($wohnflaeche === false) {
     $fehler[] = 'wohnflaeche';
+}
+
+$etage = $_POST['etage'] ?? '';
+$ERLAUBTE_ETAGEN = ['keller', 'eg', '1og', '2og', '3og', '4og-plus'];
+if (!in_array($etage, $ERLAUBTE_ETAGEN, true)) {
+    $fehler[] = 'etage';
+}
+
+$aufzug = $_POST['aufzug'] ?? '';
+if (!in_array($aufzug, ['ja', 'nein'], true)) {
+    $fehler[] = 'aufzug';
+}
+
+$parken = $_POST['parken'] ?? '';
+if (!in_array($parken, ['gut', 'mittel', 'schlecht'], true)) {
+    $fehler[] = 'parken';
 }
 
 $adresse = bereinige_text((string) ($_POST['adresse'] ?? ''));
@@ -118,6 +140,25 @@ if ($terminwunsch !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $terminwunsch))
 $freitext = bereinige_text((string) ($_POST['freitext'] ?? ''));
 if (mb_strlen($freitext) > 3000) {
     $freitext = mb_substr($freitext, 0, 3000);
+}
+
+// Zusätzlich gewünschte Leistungen (Checkboxen, alle optional)
+$ERLAUBTE_ZUSATZLEISTUNGEN = [
+    'tapeten-teppich'  => 'Tapeten-/Teppichentfernung',
+    'umzug'            => 'Umzug',
+    'einlagerung'      => 'Einlagerung',
+    'gebaeudereinigung'=> 'Gebäudereinigung',
+    'fenster-glas'     => 'Fenster- & Glasreinigung',
+    'treppenhaus'      => 'Treppenhausreinigung',
+    'bauendreinigung'  => 'Sonder-/Bauendreinigung',
+];
+$zusatzleistungen = [];
+if (!empty($_POST['zusatzleistungen']) && is_array($_POST['zusatzleistungen'])) {
+    foreach ($_POST['zusatzleistungen'] as $wert) {
+        if (isset($ERLAUBTE_ZUSATZLEISTUNGEN[$wert])) {
+            $zusatzleistungen[] = $ERLAUBTE_ZUSATZLEISTUNGEN[$wert];
+        }
+    }
 }
 
 if (!empty($fehler)) {
@@ -182,13 +223,27 @@ $boundary = 'DER-' . bin2hex(random_bytes(16));
 $betreff = 'Neue Anfrage (' . ($art === 'gewerblich' ? 'Gewerblich' : 'Privat') . ') – ' . $plz;
 $betreff = bereinige_header_wert($betreff);
 
+$ETAGEN_LABEL = [
+    'keller' => 'Keller', 'eg' => 'Erdgeschoss', '1og' => '1. OG', '2og' => '2. OG',
+    '3og' => '3. OG', '4og-plus' => '4. OG oder höher',
+];
+$OBJEKTART_LABEL = [
+    'haus' => 'Haus', 'wohnung' => 'Wohnung', 'keller' => 'Keller',
+    'garage' => 'Garage', 'gewerbeeinheit' => 'Gewerbeeinheit', 'sonstiges' => 'Sonstiges',
+];
+
 $body = "Neue Anfrage über das Website-Formular\n";
 $body .= "========================================\n\n";
 $body .= "Art: " . ($art === 'gewerblich' ? 'Gewerblich' : 'Privat') . "\n";
+$body .= "Objektart: " . $OBJEKTART_LABEL[$objektart] . "\n";
 $body .= "Wohn-/Nutzfläche: {$wohnflaeche} m²\n";
+$body .= "Etage: " . $ETAGEN_LABEL[$etage] . "\n";
+$body .= "Aufzug vorhanden: " . ($aufzug === 'ja' ? 'Ja' : 'Nein') . "\n";
+$body .= "Parksituation: " . ucfirst($parken) . "\n";
 $body .= "Adresse: {$adresse}\n";
 $body .= "PLZ: {$plz}\n";
 $body .= "Terminwunsch: " . ($terminwunsch !== '' ? $terminwunsch : '(keine Angabe)') . "\n\n";
+$body .= "Gewünschte Zusatzleistungen: " . (empty($zusatzleistungen) ? '(keine)' : implode(', ', $zusatzleistungen)) . "\n\n";
 $body .= "Name: {$name}\n";
 $body .= "Telefon: {$telefon}\n";
 $body .= "E-Mail: {$email}\n\n";

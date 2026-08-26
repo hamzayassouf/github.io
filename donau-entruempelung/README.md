@@ -26,6 +26,7 @@ Alle mit `[PLATZHALTER]` bzw. `.placeholder` markierten Stellen ersetzen:
 - [ ] Domain buchen (z. B. `donau-entruempelung-regensburg.de`)
 - [ ] Hosting bei Hostinger einrichten (PHP-Support erforderlich)
 - [ ] Telefonnummer in `index.html`, `impressum.html` (Suche nach `PLATZHALTER`/`placeholder`)
+- [ ] WhatsApp-Business-Nummer im WhatsApp-Banner (`index.html`, `wa.me/49PLATZHALTER`)
 - [ ] Geschäftliche E-Mail-Adresse in `index.html`, `impressum.html`, `datenschutz.html`
       sowie in `php/anfrage-verarbeiten.php` (`EMPFAENGER_EMAIL`, `ABSENDER_ADRESSE` —
       die Absenderadresse muss zur eigenen Domain gehören, sonst landen Mails im Spam)
