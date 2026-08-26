@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Donau Entrümpelung Regensburg</title>
+  <defs>
+    <style>
+      .word { font-family: Georgia, 'Times New Roman', serif; fill: #1B3A5C; }
+      .word-accent { font-family: Georgia, 'Times New Roman', serif; fill: #C1671B; }
+      .sub { font-family: Arial, Helvetica, sans-serif; fill: #1B3A5C; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <!-- Wave / river icon -->
+  <g transform="translate(4,18)">
+    <circle cx="32" cy="32" r="32" fill="#1B3A5C"/>
+    <path d="M6 34 Q 16 24, 26 34 T 46 34 T 58 34" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M6 44 Q 16 34, 26 44 T 46 44 T 58 44" fill="none" stroke="#C1671B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="82" y="46" class="word" font-size="30" font-weight="bold">Donau <tspan class="word-accent">Entrümpelung</tspan></text>
+  <text x="82" y="70" class="sub" font-size="13">REGENSBURG</text>
+</svg>

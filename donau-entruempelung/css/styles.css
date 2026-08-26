@@ -1,0 +1,395 @@
+/* ============================================
+   Donau Entrümpelung Regensburg — Stylesheet
+   Klassisch & seriös, keine Trend-Optik
+   ============================================ */
+
+:root {
+  --blue: #1B3A5C;
+  --blue-dark: #12283f;
+  --orange: #C1671B;
+  --orange-dark: #9c5215;
+  --white: #ffffff;
+  --off-white: #f7f5f1;
+  --border: #d8d3c8;
+  --text: #2b2b2b;
+  --text-muted: #565656;
+  --font-heading: Georgia, 'Times New Roman', Times, serif;
+  --font-body: Arial, Helvetica, sans-serif;
+  --max-width: 1120px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: var(--blue); }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--blue);
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-intro {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 64px 0; }
+section:nth-of-type(even) { background: var(--off-white); }
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 3px;
+  border: 2px solid var(--orange);
+  background: var(--orange);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+/* ---------- Top bar (Telefon/E-Mail immer sichtbar) ---------- */
+.topbar {
+  background: var(--blue-dark);
+  color: var(--white);
+  font-size: 0.85rem;
+}
+.topbar .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.topbar a { color: var(--white); text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+.topbar .contact-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+/* ---------- Header / Navigation ---------- */
+header.site-header {
+  background: var(--white);
+  border-bottom: 3px solid var(--blue);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  gap: 16px;
+}
+.site-header .logo-link { flex-shrink: 0; }
+.site-header .logo-link img { height: 52px; width: auto; }
+
+nav.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+nav.main-nav a {
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+nav.main-nav a:hover { color: var(--orange); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 2px solid var(--blue);
+  border-radius: 3px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--blue);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: var(--white);
+  padding: 90px 0;
+  text-align: center;
+}
+.hero h1 {
+  color: var(--white);
+  font-size: 2.6rem;
+  max-width: 820px;
+  margin: 0 auto 20px;
+}
+.hero p {
+  max-width: 640px;
+  margin: 0 auto 12px;
+  font-size: 1.15rem;
+  color: #dfe8f2;
+}
+.hero .service-area {
+  font-weight: bold;
+  color: var(--orange);
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+}
+.hero .cta-row { margin-top: 28px; }
+
+/* ---------- Leistungen ---------- */
+.leistungen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.leistung-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--orange);
+  padding: 26px 22px;
+  border-radius: 3px;
+}
+section:nth-of-type(even) .leistung-card { background: var(--white); }
+.leistung-card .icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+  color: var(--blue);
+}
+.leistung-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+.leistung-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* ---------- Ablauf ---------- */
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  counter-reset: step;
+}
+.ablauf-step {
+  text-align: center;
+  padding: 0 10px;
+}
+.ablauf-step .step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.ablauf-step h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.ablauf-step p { color: var(--text-muted); font-size: 0.92rem; }
+
+/* ---------- Anfrage-Formular ---------- */
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.form-row { margin-bottom: 20px; }
+.form-row label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--blue);
+}
+.form-row .hint {
+  display: block;
+  font-weight: normal;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--text);
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(27,58,92,0.12);
+}
+textarea { resize: vertical; min-height: 100px; }
+
+.radio-group { display: flex; gap: 24px; }
+.radio-group label {
+  font-weight: normal;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.radio-group input { width: auto; }
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.checkbox-row input { width: auto; margin-top: 4px; }
+.checkbox-row label { font-weight: normal; color: var(--text); font-size: 0.92rem; }
+
+/* Honeypot — für Menschen unsichtbar, für Bots vorhanden */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-message {
+  padding: 14px 18px;
+  border-radius: 3px;
+  margin-bottom: 24px;
+  font-weight: bold;
+  display: none;
+}
+.form-message.show { display: block; }
+.form-message.success { background: #e4f3e6; color: #1f5c2a; border: 1px solid #b7ddba; }
+.form-message.error { background: #fbe6e2; color: #8a2e1c; border: 1px solid #f0c3b8; }
+
+.form-submit { text-align: center; margin-top: 8px; }
+
+/* ---------- Über uns ---------- */
+.ueber-uns-text {
+  max-width: 780px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* ---------- Kontakt ---------- */
+.kontakt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.kontakt-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.kontakt-item p { color: var(--text-muted); }
+.kontakt-item a { color: var(--blue); font-weight: bold; text-decoration: none; }
+.kontakt-item a:hover { color: var(--orange); }
+.placeholder { color: var(--orange); font-style: italic; }
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  background: var(--blue-dark);
+  color: #cfd9e3;
+  padding: 32px 0;
+  font-size: 0.9rem;
+}
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+footer a { color: #cfd9e3; text-decoration: none; }
+footer a:hover { color: var(--white); text-decoration: underline; }
+footer .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .leistungen-grid { grid-template-columns: repeat(2, 1fr); }
+  .ablauf-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+  .kontakt-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-block; }
+  nav.main-nav {
+    display: none;
+    width: 100%;
+    order: 3;
+  }
+  nav.main-nav.open { display: block; }
+  nav.main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+  nav.main-nav li { border-bottom: 1px solid var(--border); }
+  nav.main-nav a { display: block; padding: 12px 0; }
+  .site-header .container { flex-wrap: wrap; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero { padding: 60px 0; }
+  .leistungen-grid { grid-template-columns: 1fr; }
+  .ablauf-grid { grid-template-columns: 1fr; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+  .form-card { padding: 24px 18px; }
+  .topbar .container { justify-content: center; text-align: center; }
+}
