@@ -721,3 +721,19 @@ footer .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
   .checkbox-grid { grid-template-columns: 1fr; }
   .whatsapp-banner { flex-direction: column; text-align: center; margin-top: -28px; padding: 24px; }
 }
+
+/* ---------- Print (Chromium bläht sonst nicht sichtbare/animierte Elemente auf) ---------- */
+@media print {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  header.site-header { position: static; }
+  .hero-glow { display: none; }
+  .leistung-card, .vorteil-card, .kontakt-item, .ablauf-step, .faq-item, .value-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  svg { max-width: none; }
+}
