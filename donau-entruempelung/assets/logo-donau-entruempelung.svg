@@ -2,9 +2,9 @@
   <title id="logoTitle">Donau Entrümpelung Regensburg</title>
   <defs>
     <style>
-      .word { font-family: Georgia, 'Times New Roman', serif; fill: #1B3A5C; }
-      .word-accent { font-family: Georgia, 'Times New Roman', serif; fill: #C1671B; }
-      .sub { font-family: Arial, Helvetica, sans-serif; fill: #1B3A5C; letter-spacing: 2px; }
+      .word { font-family: 'Poppins', Arial, sans-serif; fill: #1B3A5C; }
+      .word-accent { font-family: 'Poppins', Arial, sans-serif; fill: #C1671B; }
+      .sub { font-family: 'Inter', Arial, sans-serif; fill: #1B3A5C; letter-spacing: 2px; }
     </style>
   </defs>
 

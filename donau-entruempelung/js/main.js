@@ -21,6 +21,44 @@
     });
   }
 
+  // Header: Schatten nach dem Scrollen
+  var siteHeader = document.getElementById('siteHeader');
+  if (siteHeader) {
+    var onScroll = function () {
+      siteHeader.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Scroll-Reveal-Animationen
+  var revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+  }
+
+  // Datei-Upload: ausgewählte Dateien im Drop-Label anzeigen
+  var fileDropLabel = document.getElementById('fileDropLabel');
+  var fileInputEl = document.getElementById('fotos');
+  if (fileDropLabel && fileInputEl) {
+    fileInputEl.addEventListener('change', function () {
+      var count = fileInputEl.files ? fileInputEl.files.length : 0;
+      fileDropLabel.textContent = count > 0
+        ? count + (count === 1 ? ' Datei ausgewählt' : ' Dateien ausgewählt')
+        : 'Dateien auswählen oder hierher ziehen';
+    });
+  }
+
   // Statusmeldung nach Formular-Redirect anzeigen (?status=success / ?status=error / ?status=spam)
   var formMessage = document.getElementById('formMessage');
   if (formMessage) {

@@ -14,6 +14,9 @@
 <meta property="og:locale" content="de_DE">
 
 <link rel="icon" type="image/svg+xml" href="assets/logo-donau-entruempelung.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -23,40 +26,67 @@
   <div class="container">
     <span>Mo–Sa, 7:00–18:00 Uhr</span>
     <div class="contact-links">
-      <a href="tel:+49PLATZHALTER">📞 <span class="placeholder">[Telefonnummer folgt]</span></a>
-      <a href="mailto:info@donau-entruempelung-regensburg.de">✉️ <span class="placeholder">[E-Mail folgt]</span></a>
+      <a href="tel:+49PLATZHALTER">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="placeholder">[Telefonnummer folgt]</span>
+      </a>
+      <a href="mailto:info@donau-entruempelung-regensburg.de">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+        <span class="placeholder">[E-Mail folgt]</span>
+      </a>
     </div>
   </div>
 </div>
 
 <!-- Header -->
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container">
     <a href="#top" class="logo-link" aria-label="Donau Entrümpelung Regensburg — Startseite">
       <img src="assets/logo-donau-entruempelung.svg" alt="Donau Entrümpelung Regensburg Logo">
     </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Navigation öffnen">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Navigation öffnen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
     <nav class="main-nav" id="mainNav">
       <ul>
         <li><a href="#top">Startseite</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#ablauf">Ablauf</a></li>
-        <li><a href="#anfrage">Anfrage</a></li>
         <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
+      <a href="#anfrage" class="btn btn-sm">Jetzt anfragen</a>
     </nav>
   </div>
 </header>
 
 <!-- Hero -->
 <section class="hero" id="top">
-  <div class="container">
-    <h1>Entrümpelung in Regensburg — schnell, fair und zuverlässig</h1>
-    <p>Von der Wohnungsentrümpelung bis zur Nachlassauflösung: Wir übernehmen die komplette Räumung, respektvoll und besenrein.</p>
-    <p class="service-area">Einzugsgebiet: Regensburg Stadt &amp; Landkreis Regensburg</p>
-    <div class="cta-row">
-      <a href="#anfrage" class="btn">Jetzt unverbindlich anfragen</a>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="reveal">
+      <span class="eyebrow">Entrümpelung Regensburg &amp; Landkreis</span>
+      <h1>Wir schaffen <span class="text-accent">Platz</span> —<br>schnell, fair und zuverlässig</h1>
+      <p class="hero-text">Von der Wohnungsentrümpelung bis zur Nachlassauflösung: Wir übernehmen die komplette Räumung, respektvoll und besenrein.</p>
+      <div class="cta-row">
+        <a href="#anfrage" class="btn btn-lg">Jetzt unverbindlich anfragen</a>
+        <a href="tel:+49PLATZHALTER" class="btn btn-lg btn-ghost">Anrufen <span class="placeholder">[Telefonnummer folgt]</span></a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg>
+          Festpreis-Garantie
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Termine kurzfristig möglich
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.35-9.5-9C.5 7.5 3 4 6.5 4c2 0 3.5 1.5 5.5 3.5C14 5.5 15.5 4 17.5 4 21 4 23.5 7.5 21.5 12 19 16.65 12 21 12 21z"/></svg>
+          Diskret &amp; einfühlsam
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -64,78 +94,79 @@
 <!-- Leistungen -->
 <section id="leistungen">
   <div class="container">
-    <h2>Unsere Leistungen</h2>
-    <p class="section-intro">Ob privat oder gewerblich — wir kümmern uns um jede Art von Entrümpelung in Regensburg und Umgebung.</p>
+    <span class="eyebrow eyebrow-dark reveal">Leistungen</span>
+    <h2 class="reveal">Alles aus einer Hand</h2>
+    <p class="section-intro reveal">Ob privat oder gewerblich — wir kümmern uns um jede Art von Entrümpelung in Regensburg und Umgebung.</p>
     <div class="leistungen-grid">
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg></span>
         <h3>Haushaltsauflösung</h3>
         <p>Komplette Auflösung von Haushalten — organisiert und zuverlässig.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M9 4v16"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M9 4v16"/></svg></span>
         <h3>Wohnungsentrümpelung</h3>
         <p>Schnelle, saubere Räumung von Wohnungen jeder Größe.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16v10H4z"/><path d="M4 10l8-6 8 6"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16v10H4z"/><path d="M4 10l8-6 8 6"/></svg></span>
         <h3>Kellerentrümpelung</h3>
         <p>Platz schaffen im Keller — inklusive fachgerechter Entsorgung.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11"/></svg></span>
         <h3>Dachbodenentrümpelung</h3>
         <p>Auch schwer zugängliche Dachböden räumen wir zuverlässig.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M8 9V6a4 4 0 018 0v3"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M8 9V6a4 4 0 018 0v3"/></svg></span>
         <h3>Garagen- &amp; Gartenentrümpelung</h3>
         <p>Garagen, Schuppen und Gärten — sauber beräumt.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M9 4v16"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M9 4v16"/></svg></span>
         <h3>Gewerbliche Entrümpelung / Büroauflösung</h3>
         <p>Räumung von Büros und Gewerbeflächen, termingerecht.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5 5 0 00-7.1 0L12 5.3l-1.7-.7a5 5 0 00-7.1 7.1L12 20.3l8.8-8.8a5 5 0 000-7z"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge icon-badge-accent"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5 5 0 00-7.1 0L12 5.3l-1.7-.7a5 5 0 00-7.1 7.1L12 20.3l8.8-8.8a5 5 0 000-7z"/></svg></span>
         <h3>Nachlassauflösung</h3>
         <p>Einfühlsam und diskret, nach einem Todesfall.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 12h14"/><circle cx="12" cy="12" r="9"/></svg></span>
         <h3>Messie-Wohnungen</h3>
         <p>Diskrete und zuverlässige Räumung, ohne Vorurteile.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18l-2 13H5L3 7z"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18l-2 13H5L3 7z"/><path d="M8 7V5a4 4 0 018 0v2"/></svg></span>
         <h3>Sperrmüll-Entsorgung</h3>
         <p>Fachgerechte Entsorgung von Sperrmüll aller Art.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="8" rx="1"/><path d="M7 11V7a2 2 0 012-2h6a2 2 0 012 2v4"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="8" rx="1"/><path d="M7 11V7a2 2 0 012-2h6a2 2 0 012 2v4"/></svg></span>
         <h3>Möbel-Demontage</h3>
         <p>Wir demontieren Möbel fachgerecht vor dem Abtransport.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 4l16 16M20 4L4 20"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 4l16 16M20 4L4 20"/></svg></span>
         <h3>Besenreine Übergabe</h3>
         <p>Endreinigung, damit die Übergabe reibungslos klappt.</p>
       </div>
 
-      <div class="leistung-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="leistung-card reveal">
+        <span class="icon-badge icon-badge-accent"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></span>
         <h3>Ankauf verwertbarer Gegenstände</h3>
         <p>Wir kaufen Verwertbares an und verrechnen es fair mit den Entsorgungskosten.</p>
       </div>
@@ -147,25 +178,26 @@
 <!-- Ablauf -->
 <section id="ablauf">
   <div class="container">
-    <h2>So läuft eine Beauftragung ab</h2>
-    <p class="section-intro">Vier einfache Schritte bis zur besenreinen Übergabe.</p>
+    <span class="eyebrow eyebrow-dark reveal">Ablauf</span>
+    <h2 class="reveal">So läuft eine Beauftragung ab</h2>
+    <p class="section-intro reveal">Vier einfache Schritte bis zur besenreinen Übergabe.</p>
     <div class="ablauf-grid">
-      <div class="ablauf-step">
+      <div class="ablauf-step reveal">
         <div class="step-number">1</div>
         <h3>Anfrage</h3>
         <p>Sie senden uns Ihre Anfrage über das Formular oder telefonisch.</p>
       </div>
-      <div class="ablauf-step">
+      <div class="ablauf-step reveal">
         <div class="step-number">2</div>
         <h3>Besichtigung</h3>
         <p>Wir verschaffen uns vor Ort einen Überblick über Umfang und Aufwand.</p>
       </div>
-      <div class="ablauf-step">
+      <div class="ablauf-step reveal">
         <div class="step-number">3</div>
         <h3>Festpreisangebot</h3>
         <p>Sie erhalten ein transparentes Angebot ohne versteckte Kosten.</p>
       </div>
-      <div class="ablauf-step">
+      <div class="ablauf-step reveal">
         <div class="step-number">4</div>
         <h3>Räumung &amp; Übergabe</h3>
         <p>Termingerechte Räumung inklusive besenreiner Übergabe.</p>
@@ -177,19 +209,22 @@
 <!-- Anfrage-Tool -->
 <section id="anfrage">
   <div class="container">
-    <h2>Unverbindlich anfragen</h2>
-    <p class="section-intro">Beschreiben Sie kurz Ihr Vorhaben — wir melden uns zeitnah mit einem individuellen Angebot. Eine automatische Preisberechnung bieten wir bewusst nicht an, da Zustand, Etage, Aufzug und Menge den Preis stark beeinflussen.</p>
+    <span class="eyebrow eyebrow-dark reveal">Kostenlos &amp; unverbindlich</span>
+    <h2 class="reveal">Jetzt Anfrage stellen</h2>
+    <p class="section-intro reveal">Beschreiben Sie kurz Ihr Vorhaben — wir melden uns zeitnah mit einem individuellen Angebot. Eine automatische Preisberechnung bieten wir bewusst nicht an, da Zustand, Etage, Aufzug und Menge den Preis stark beeinflussen.</p>
 
-    <div class="form-card">
+    <div class="form-card reveal">
       <div class="form-message" id="formMessage"></div>
 
       <form action="php/anfrage-verarbeiten.php" method="post" enctype="multipart/form-data" id="anfrageForm">
 
         <div class="form-row">
           <label for="art">Anfrage-Art *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="art" value="privat" checked required> Privat</label>
-            <label><input type="radio" name="art" value="gewerblich" required> Gewerblich</label>
+          <div class="segmented">
+            <input type="radio" id="art-privat" name="art" value="privat" checked required>
+            <label for="art-privat">Privat</label>
+            <input type="radio" id="art-gewerblich" name="art" value="gewerblich" required>
+            <label for="art-gewerblich">Gewerblich</label>
           </div>
         </div>
 
@@ -217,7 +252,11 @@
 
         <div class="form-row">
           <label for="fotos">Fotos hochladen (optional)</label>
-          <input type="file" id="fotos" name="fotos[]" accept=".jpg,.jpeg,.png,.heic,.pdf,image/jpeg,image/png,image/heic,application/pdf" multiple>
+          <label class="file-drop" for="fotos" id="fileDrop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M12 4 7 9M12 4l5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+            <span id="fileDropLabel">Dateien auswählen oder hierher ziehen</span>
+          </label>
+          <input type="file" id="fotos" name="fotos[]" accept=".jpg,.jpeg,.png,.heic,.pdf,image/jpeg,image/png,image/heic,application/pdf" multiple class="file-input-hidden">
           <span class="hint">Max. 5 Dateien, je max. 5 MB. Erlaubt: JPG, PNG, HEIC, PDF.</span>
         </div>
 
@@ -254,7 +293,7 @@
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn">Anfrage absenden</button>
+          <button type="submit" class="btn btn-lg">Anfrage absenden</button>
         </div>
 
       </form>
@@ -264,41 +303,62 @@
 
 <!-- Über uns -->
 <section id="ueber-uns">
-  <div class="container">
-    <h2>Über uns</h2>
-    <p class="ueber-uns-text">
-      Donau Entrümpelung Regensburg steht für zuverlässige, faire und
-      diskrete Entrümpelungen in Regensburg und Umgebung. Ob Wohnung,
-      Keller, Dachboden oder gewerbliche Räumlichkeiten — wir übernehmen
-      die komplette Organisation, von der Besichtigung über die Räumung
-      bis zur besenreinen Übergabe. Besonders bei Haushaltsauflösungen
-      nach einem Todesfall nehmen wir uns Zeit für ein einfühlsames und
-      respektvolles Vorgehen. Verwertbare Gegenstände kaufen wir an und
-      rechnen sie fair mit den Entsorgungskosten auf.
-    </p>
+  <div class="container ueber-uns-grid">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-dark">Über uns</span>
+      <h2>Menschlich. Fair. Zuverlässig.</h2>
+      <p class="ueber-uns-text">
+        Donau Entrümpelung Regensburg steht für zuverlässige, faire und
+        diskrete Entrümpelungen in Regensburg und Umgebung. Ob Wohnung,
+        Keller, Dachboden oder gewerbliche Räumlichkeiten — wir übernehmen
+        die komplette Organisation, von der Besichtigung über die Räumung
+        bis zur besenreinen Übergabe. Besonders bei Haushaltsauflösungen
+        nach einem Todesfall nehmen wir uns Zeit für ein einfühlsames und
+        respektvolles Vorgehen. Verwertbare Gegenstände kaufen wir an und
+        rechnen sie fair mit den Entsorgungskosten auf.
+      </p>
+    </div>
+    <div class="values-card reveal">
+      <div class="value-item">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7z"/></svg></span>
+        <div><h3>Zuverlässig</h3><p>Termintreue, die man sich merkt.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <div><h3>Fair</h3><p>Transparente Festpreise, keine Überraschungen.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        <div><h3>Diskret</h3><p>Einfühlsam, besonders bei sensiblen Anlässen.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Kontakt -->
 <section id="kontakt">
   <div class="container">
-    <h2>Kontakt</h2>
-    <p class="section-intro">Sie erreichen uns telefonisch, per E-Mail oder über das Anfrage-Formular.</p>
+    <span class="eyebrow eyebrow-dark reveal">Kontakt</span>
+    <h2 class="reveal">Sprechen Sie mit uns</h2>
+    <p class="section-intro reveal">Sie erreichen uns telefonisch, per E-Mail oder über das Anfrage-Formular.</p>
     <div class="kontakt-grid">
-      <div class="kontakt-item">
+      <div class="kontakt-item reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
         <h3>Telefon</h3>
         <p><a href="tel:+49PLATZHALTER" class="placeholder">[Telefonnummer folgt]</a></p>
       </div>
-      <div class="kontakt-item">
+      <div class="kontakt-item reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg></span>
         <h3>E-Mail</h3>
         <p><a href="mailto:info@donau-entruempelung-regensburg.de">info@donau-entruempelung-regensburg.de</a></p>
       </div>
-      <div class="kontakt-item">
+      <div class="kontakt-item reveal">
+        <span class="icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
         <h3>Öffnungszeiten</h3>
         <p>Montag bis Samstag<br>7:00–18:00 Uhr</p>
       </div>
     </div>
-    <p class="section-intro" style="margin-top:32px;"><strong>Adresse:</strong> <span class="placeholder">[Anschrift folgt]</span>, Regensburg</p>
+    <p class="section-intro reveal" style="margin-top:32px;"><strong>Adresse:</strong> <span class="placeholder">[Anschrift folgt]</span>, Regensburg</p>
   </div>
 </section>
 
