@@ -287,6 +287,19 @@ nav.main-nav ul a:hover { color: var(--orange); }
   margin-bottom: 8px;
 }
 .leistung-card p { color: var(--text-muted); font-size: 0.95rem; }
+.leistung-card .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: none;
+}
+.leistung-card .card-link:hover { color: var(--orange-light); }
+.leistung-card .card-link svg { width: 15px; height: 15px; transition: transform 0.15s ease; }
+.leistung-card .card-link:hover svg { transform: translateX(3px); }
 
 /* ---------- Ablauf ---------- */
 .ablauf-grid {

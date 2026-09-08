@@ -21,6 +21,19 @@ const EMPFAENGER_EMAIL = 'info@donau-entruempelung-regensburg.de'; // [PLATZHALT
 const ABSENDER_ADRESSE  = 'formular@donau-entruempelung-regensburg.de'; // [PLATZHALTER] – muss zur eigenen Domain gehören
 const REDIRECT_ZIEL     = '../index.html';
 
+// Whitelist erlaubter Rücksprungziele (verhindert Open-Redirect über das
+// versteckte "rueckkehr"-Feld) – jede Seite mit eingebettetem Formular trägt
+// hier ihren eigenen relativen Pfad (aus Sicht von php/) ein.
+const ERLAUBTE_RUECKKEHR_ZIELE = [
+    '../index.html',
+    '../leistungen/haushaltsaufloesung.html',
+    '../leistungen/wohnungsentruempelung.html',
+    '../leistungen/nachlassaufloesung.html',
+    '../leistungen/kellerentruempelung.html',
+    '../leistungen/umzuege.html',
+    '../leistungen/gewerbliche-entruempelung.html',
+];
+
 const MAX_DATEIEN   = 5;
 const MAX_DATEIGROESSE = 5 * 1024 * 1024; // 5 MB
 const ERLAUBTE_MIME_TYPEN = [
@@ -36,7 +49,11 @@ const ERLAUBTE_ENDUNGEN = ['jpg', 'jpeg', 'png', 'heic', 'heif', 'pdf'];
 
 function redirect_mit_status(string $status): void
 {
-    header('Location: ' . REDIRECT_ZIEL . '?status=' . urlencode($status) . '#anfrage');
+    $ziel = $_POST['rueckkehr'] ?? '';
+    if (!in_array($ziel, ERLAUBTE_RUECKKEHR_ZIELE, true)) {
+        $ziel = REDIRECT_ZIEL;
+    }
+    header('Location: ' . $ziel . '?status=' . urlencode($status) . '#anfrage');
     exit;
 }
 
@@ -232,8 +249,16 @@ $OBJEKTART_LABEL = [
     'garage' => 'Garage', 'gewerbeeinheit' => 'Gewerbeeinheit', 'sonstiges' => 'Sonstiges',
 ];
 
+$quelle = bereinige_text((string) ($_POST['quelle'] ?? ''));
+if (mb_strlen($quelle) > 100) {
+    $quelle = mb_substr($quelle, 0, 100);
+}
+
 $body = "Neue Anfrage über das Website-Formular\n";
 $body .= "========================================\n\n";
+if ($quelle !== '') {
+    $body .= "Quelle: {$quelle}\n";
+}
 $body .= "Art: " . ($art === 'gewerblich' ? 'Gewerblich' : 'Privat') . "\n";
 $body .= "Objektart: " . $OBJEKTART_LABEL[$objektart] . "\n";
 $body .= "Wohn-/Nutzfläche: {$wohnflaeche} m²\n";

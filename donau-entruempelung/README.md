@@ -11,6 +11,13 @@ donau-entruempelung/
 ├── index.html                     One-Pager mit Anker-Navigation
 ├── impressum.html                 Impressum (mit Platzhaltern)
 ├── datenschutz.html               Datenschutzerklärung (mit Platzhaltern)
+├── leistungen/                    Eigene Mini-Landingpages pro Leistung (für SEO/Google Ads)
+│   ├── haushaltsaufloesung.html
+│   ├── wohnungsentruempelung.html
+│   ├── nachlassaufloesung.html
+│   ├── kellerentruempelung.html
+│   ├── umzuege.html
+│   └── gewerbliche-entruempelung.html
 ├── css/styles.css                 Gesamtes Styling
 ├── js/main.js                     Mobile Nav, Formular-Statusmeldung, Upload-Vorprüfung
 ├── php/anfrage-verarbeiten.php    Serverseitige Formularverarbeitung + E-Mail-Versand
@@ -18,6 +25,19 @@ donau-entruempelung/
 ├── .htaccess                      Security-Header (Apache/Hostinger)
 └── robots.txt
 ```
+
+## Leistungs-Landingpages (`leistungen/`)
+
+Für die 6 wichtigsten Leistungen gibt es eigene Mini-Landingpages mit eigenem
+Hero-Text, eigenen Vorteilen/FAQ und einem **eingebetteten Anfrage-Formular**
+(ideal als Google-Ads-Zielseite — kein Extra-Klick nötig). Jede Seite trägt
+im Formular ein verstecktes `quelle`-Feld, damit in der Anfrage-E-Mail steht,
+über welche Seite die Anfrage kam. Weitere Leistungen können nach dem
+gleichen Muster ergänzt werden (Vorlage: `leistungen/haushaltsaufloesung.html`
+kopieren und anpassen; neue Datei zusätzlich in
+`php/anfrage-verarbeiten.php` bei `ERLAUBTE_RUECKKEHR_ZIELE` eintragen, sonst
+landet die Weiterleitung nach dem Absenden auf der Startseite statt der
+eigenen Landingpage).
 
 ## Vor dem Live-Gang noch zu erledigen
 
