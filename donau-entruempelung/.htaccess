@@ -1,0 +1,19 @@
+# Sicherheits-Header und Basis-Härtung für Hostinger (Apache)
+
+# HTTPS erzwingen (aktivieren, sobald SSL-Zertifikat aktiv ist)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
+# Verzeichnisauflistung verhindern
+Options -Indexes
+
+# PHP-Skripte außerhalb von /php nicht direkt aufrufbar machen (optional, falls gewünscht)
